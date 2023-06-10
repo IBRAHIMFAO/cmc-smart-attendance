@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Filiere extends Model
 {
     use HasFactory;
-    // protected $fillable = [
-    //     'nom_filiere'
-    // ];
+    protected $fillable = [
+        'nom_filiere',
+        // 'label'
+    ];
 
     public function groups()
     {

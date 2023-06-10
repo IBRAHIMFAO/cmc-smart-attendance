@@ -60,7 +60,7 @@
                             <select class="form-control" id="salle" name="salle" required>
                                 <option value="">Select Salle</option>
                                 @foreach ($salles as $salle)
-                                <option value="{{ $salle->id }}">{{ $salle->status }} N¤ {{ $salle->numero_salle }} </option>
+                                <option value="{{ $salle->id }}">{{ $salle->status }} N: {{ $salle->numero_salle }} </option>
                                 @endforeach
                             </select>
                         </div>

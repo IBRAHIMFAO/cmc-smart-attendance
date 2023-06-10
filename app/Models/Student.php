@@ -11,10 +11,14 @@ class Student extends Model
 
     protected $fillable = ['name','firstName','lastName' ,'codeRFID','code_group','code_tuteur'];
 
-    // public function attendance()
-    // {
-    //     return $this->belongsTo(Attendance::class);
-    // }
+
+    public function attendance()
+    {
+        return $this->hasMany(Attendance::class,'code_student');
+    }
+
+
+
     public function group()
     {
         return $this->belongsTo(Group::class, 'code_group');

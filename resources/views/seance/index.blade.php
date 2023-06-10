@@ -4,7 +4,7 @@
 
         <!-- resources/views/seance/index.blade.php -->
 
-        <a class="navbar-brand">Tableaux séance</a>
+        {{-- <a class="navbar-brand">Tableaux séance</a> --}}
 
 
 
@@ -19,31 +19,29 @@
                 <td>{{ $seance->salle->label }}</td>
             @endforeach
         </ul> --}}
-        {{-- <div class="container"> --}}
 
-                <nav class="navbar navbar-light bg-light justify-content-between">
-                    {{-- <a class="navbar-brand">Tableaux séance</a> --}}
-                    <a href="{{ route('crud.create') }}" class="btn btn-primary">Add Seance</a>
-                        <form class="form-line">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </form>
-                </nav>
+        <div class="container">
+                    {{-- <p class="text">Les séances</p> --}}
+                    <p class="text" style="font-weight: bold; text-decoration: underline dotted; font-size: 50px;">Les séances</p>
 
-                <table class="table">
+                    <a href="{{ route('crud.create') }}" class="btn btn-primary">Add Seance</a> <br><br>
+
+
+
+                <table class="table table-striped " id="tableindex">
                     <thead class="thead-dark">
                     <tr>
-                        <th scope="col">i</th>
+                        {{-- <th scope="col">id</th> --}}
                         <th scope="col">Group</th>
                         <th scope="col">Matiere</th>
                         <th scope="col">Prof</th>
                         <th scope="col">Salle</th>
                         <th scope="col">Date</th>
-                        <th scope="col">début seance </th>
-                        <th scope="col">Fin seance</th>
-                        <th scope="col">created_at</th>
-                        <th scope="col">updated_at</th>
-                        <th scope="col">Action</th>
+                        <th scope="col">début_seance</th>
+                        <th scope="col">Fin_seance</th>
+                        <th scope="col">created</th>
+                        <th scope="col">updated</th>
+                        <th scope="col" class="text-center"> Action  </th>
                     </tr>
                     </thead>
                     <tbody>
@@ -52,16 +50,16 @@
 
                     @foreach ($seances as $seance )
                         <tr>
-                            <td> {{ $i }} </td>
+                            {{-- <td> {{ $i }} </td> --}}
                             <td> {{$seance->group->nom_group   }} </td>
                             <td> {{$seance->matiere->nom_matiere  }} </td>
                             <td> {{$seance->prof->firstName }} {{$seance->prof->lastName }} </td>
-                            <td> {{$seance->salle->status  }} N¤: {{$seance->salle->numero_salle  }} </td>
-                            <td> {{ $seance->date }} </td>
+                            <td> {{$seance->salle->status}} N:{{$seance->salle->numero_salle  }} </td>
+                            <td> {{ $seance->date }}</td>
                             <td> {{ $seance->heure_debut }} </td>
-                            <td> {{$seance->heure_fin  }} </td>
-                            <td> {{$seance->created_at  }} </td>
-                            <td> {{$seance->updated_at  }} </td>
+                            <td> {{$seance->heure_fin }} </td>
+                            <td> {{$seance->created_at}}</td>
+                            <td> {{$seance->updated_at}}</td>
                             <td>
                                 <div class="btn-group">
                                     <a href="{{ route('crud.edit', $seance->id) }}" class="btn btn-primary" style="margin:2%">Edit</a>
@@ -90,10 +88,7 @@
                     @endif
 
 
-
-
-
                     </tbody>
                 </table>
-        {{-- </div> --}}
+        </div>
 @endsection

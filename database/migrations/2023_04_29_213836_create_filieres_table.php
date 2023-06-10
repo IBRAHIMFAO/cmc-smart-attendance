@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('filieres', function (Blueprint $table) {
             $table->id();
             $table->string('nom_filiere');
-            $table->string('label', 20);
+            $table->string('label', 20)->nullable();
             $table->timestamps();
         });
     }

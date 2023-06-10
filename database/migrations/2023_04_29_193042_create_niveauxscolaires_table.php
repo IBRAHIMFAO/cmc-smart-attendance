@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('niveauxscolaires', function (Blueprint $table) {
             $table->id();
             $table->string('niveauxscolaire',30);
-            $table->string('label', 20);
+            $table->string('label', 20)->nullable();
             $table->timestamps();
         });
     }

@@ -26,7 +26,6 @@ class AttendanceController4 extends Controller
         $group_id = $student->code_group;
 
 
-
         // Retrieve the current session for the student's group
         $currentSession = Seance::where('code_group', $group_id)
             ->whereDate('date', '=', Carbon::now()->format("Y-m-d"))
@@ -48,9 +47,9 @@ class AttendanceController4 extends Controller
             }
 
             // Return a success response with the next session information
-            return response()->json(['success' => true, 'next_session' => $nextSession->date
+            return response()->json([ 'next_session' => $nextSession->date
                                                     .' at ' .$nextSession->heure_debut .' fin '.$nextSession->heure_fin]);
-
+        // 'success' => true,
         }
 
             // Check if the student has already been marked present or tardy for the current session
@@ -79,12 +78,14 @@ class AttendanceController4 extends Controller
         if ($minutes_since_seance_start <= 2) {
             $attendance_status = 'present';
             // return "present";
+            // return response()->json(['success' => 'present'], 200);
+
         }
         // If the student is tardy, record the attendance
         else if ($minutes_since_seance_start <= 4) {
             $attendance_status = 'tardy';
             // return "tardy";
-
+            // return response()->json(['MESS' => 'Tardy'], 200);
         }
         //   // If the student is absent, record the attendance for all students in the group
         //   else {
@@ -104,7 +105,7 @@ class AttendanceController4 extends Controller
         ]);
 
         // Return a success response
-        return response()->json(['success' => 'student is '. $attendance_status]);
+        return response()->json(['success' => 'student is '. $attendance_status],200);
     }
 
 

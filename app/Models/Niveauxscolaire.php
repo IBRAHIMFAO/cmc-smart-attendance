@@ -9,9 +9,9 @@ class Niveauxscolaire extends Model
 {
     use HasFactory;
 
-    // protected $fillable = [
-    //     'nom_niveauxscolaire'
-    // ];
+    protected $fillable = [
+        'niveauxscolaire'
+    ];
 
     public function groups()
     {

@@ -15,9 +15,9 @@ return new class extends Migration
     {
         Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('label');
+            $table->string('label')->nullable() ;
             $table->string('nom_group',20);
-            $table->string('description');
+            $table->string('description')->nullable();
             $table->unsignedBigInteger('code_niveauxscolaire'); // Add the foreign key column
             $table->unsignedBigInteger('code_filiere');
             // $table->unsignedBigInteger('code_seance');

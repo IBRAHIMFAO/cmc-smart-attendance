@@ -7,7 +7,7 @@ use App\Http\Controllers\AttendanceController4;
 use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\SMSController;
 use App\Http\Controllers\CRUDController;
-
+use App\Http\Controllers\GroupController;
 use Carbon\Carbon;
 
 use App\Models\Attendance;
@@ -32,8 +32,12 @@ Route::get('/timetable', function () {
     return view('tabletest');
 });
 
+Route::get('/export-excel',[GroupController::class,'export'])->name('export-excel');
+Route::post('/import-excel',[GroupController::class,'import'])->name('import-excel');
+
 Route::resource('crud', CRUDController::class);
 Route::get('/crud/seance/{id}/attendance',[CRUDController::class,'attendance'])->name('crud.attendance');
+Route::resource('groups', GroupController::class);
 // Route::get('/seance/index',[CRUDController::class,'index'] )->name('seance.index');
 // Route::get('/seance/create',[CRUDController::class,'create'] )->name('seance.create');
 // Route::get('/seance/edit/{id}',[CRUDController::class,'edit'] )->name('seance.edit');

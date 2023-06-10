@@ -9,11 +9,13 @@ class Group extends Model
 {
     use HasFactory;
 
-    // protected $fillable = [
-    //     'nom_group',
-    //     'code_niveauxscolaire',
-    //     'code_filiere'
-    // ];
+    protected $fillable = [
+        'label',
+        'nom_group',
+        'description',
+        'code_niveauxscolaire',
+        'code_filiere'
+    ];
 
     public function niveauxscolaire()
     {
