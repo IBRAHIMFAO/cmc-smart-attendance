@@ -22,13 +22,17 @@ class CRUDController extends Controller
     public function index()
     {
         $seances = Seance::all();
+        // $seances = Seance::paginate(4);
+
 
         // $seances=Seance::select('*')->orderBy("id","ASC")->get();
 
 
         // return response()->json($seances);
 
+        // return view('seance.index', ['seances'=>$seances]);
         return view('seance.index', ['seances'=>$seances]);
+
     }
 
     /**
@@ -170,8 +174,8 @@ class CRUDController extends Controller
         // $seance->save();
 
         $seance = Seance::find($id);
-        // $seance->code_group = $validatedData['group'];
-        $seance -> code_group = $request -> input('group');
+        $seance->code_group = $validatedData['group'];
+        // $seance -> code_group = $request -> input('group');
         // $seance->code_matiere = $validatedData['matiere']; // Set the foreign key value
         // $seance->code_prof = $validatedData['prof']; // Set the foreign key value
         // $seance->code_salle = $validatedData['salle']; // Set the foreign key value

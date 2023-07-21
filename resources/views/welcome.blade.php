@@ -1,4 +1,6 @@
- @extends('layouts')
+@extends('dashboard.master')
+{{-- @include('dashcontent') --}}
+ {{-- @extends('layouts')
 
 @section('content')
 
@@ -90,4 +92,4 @@
 @endpush
 
 
-
+ --}}

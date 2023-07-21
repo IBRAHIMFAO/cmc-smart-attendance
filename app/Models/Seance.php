@@ -32,7 +32,9 @@ public function matiere(){
 public function group(){
     return $this->belongsTo(Group::class,'code_group');
 }
-// public function attendance (){
-//     $this->hasOne(Attendance::class,'code_attendance');
-// }
+################################################################################
+public function attendance (){
+    $this->hasMany(Attendance::class,'code_attendance');
+}
+####################################################################################
 }

@@ -7,6 +7,11 @@ use App\Http\Controllers\AttendanceController4;
 use App\Http\Controllers\SeanceController;
 use App\Http\Controllers\SMSController;
 use App\Http\Controllers\CRUDController;
+use App\Http\Controllers\dashboardController;
+use App\Http\Controllers\dashSeanceController;
+use App\Http\Controllers\dashGroupeController;
+use App\Http\Controllers\dashStudentController;
+use App\Http\Controllers\EmploiDuTempsController;
 use App\Http\Controllers\GroupController;
 use Carbon\Carbon;
 
@@ -32,6 +37,12 @@ Route::get('/timetable', function () {
     return view('tabletest');
 });
 
+// Route::get('/testtable', [EmploiDuTempsController::class, 'index']);
+Route::get('/test', function () {
+    return view('test');
+});
+
+
 Route::get('/export-excel',[GroupController::class,'export'])->name('export-excel');
 Route::post('/import-excel',[GroupController::class,'import'])->name('import-excel');
 
@@ -43,15 +54,26 @@ Route::resource('groups', GroupController::class);
 // Route::get('/seance/edit/{id}',[CRUDController::class,'edit'] )->name('seance.edit');
 // Route::get('/seance/destroy',[CRUDController::class,'destroy'] )->name('seance.destroy');
 
+//###############dashboard#########################################"
+Route::get('/dd',[dashboardController ::class,'index'] );
+Route::resource('/dash-seance',dashSeanceController::class);
+Route::resource('/dash-groupe',dashGroupeController::class);
+Route::resource('/dash-student',dashStudentController::class);
+Route::get('/seances-dash/{id}/attendance',[dashSeanceController::class,'attendance'])->name('dash.attendance');
 
 
 
-// Route::post('/seance/create',[SeanceController::class,'create'] )->name('seance.create');
+
 
 // #################################################################
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route::get('/dash', function () {
+//     return view('dashcontent');
+// });
+
 
 Route::get('/check4/{code}', [AttendanceController4::class,'store4']);
 Route::get('/check3/{code}', [AttendanceController3::class, 'store3']);

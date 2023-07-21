@@ -20,7 +20,7 @@ class AttendanceController4 extends Controller
         $student = Student::where('codeRFID', $code)->first();
          // If the student doesn't exist, return an error response
          if (!$student) {
-            return response()->json(['error' => 'Student not found'], 404);
+            return response()->json(['error' => 'Etudiant introuvable'], 405); // 404 not found
         }
 
         $group_id = $student->code_group;
@@ -43,12 +43,16 @@ class AttendanceController4 extends Controller
 
             // If there's no next session, return an error response
             if (!$nextSession) {
-                return response()->json(['error' => 'No upcoming session found for the student\'s group'], 404);
+                return response()->json(['error' => 'Aucune seance a venir trouvee'], 404);  //No upcoming session found for the students group
+
+                    // return response()->setContent("No upcoming session");
+
+
             }
 
             // Return a success response with the next session information
             return response()->json([ 'next_session' => $nextSession->date
-                                                    .' at ' .$nextSession->heure_debut .' fin '.$nextSession->heure_fin]);
+                                                    .' at ' .$nextSession->heure_debut .' fin '.$nextSession->heure_fin], 405);
         // 'success' => true,
         }
 
@@ -60,7 +64,7 @@ class AttendanceController4 extends Controller
 
             if ($attendance) {
                 // If the attendance record already exists, return an error response
-                return response()->json(['error' => 'You have already been registered / status :'.$attendance->status], 409);
+                return response()->json(['error' => 'Vous avez deja  ete enregistre   status :'.$attendance->status], 409);//You have already been registered
             }
 
         $current_time = Carbon::now();
@@ -105,7 +109,7 @@ class AttendanceController4 extends Controller
         ]);
 
         // Return a success response
-        return response()->json(['success' => 'student is '. $attendance_status],200);
+        return response()->json(['success' => 'Etudiant est '. $attendance_status],200);
     }
 
 

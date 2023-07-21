@@ -39,6 +39,11 @@ class Group extends Model
     }
 
 
-
+#########################################################################
+// public function absences()
+// {
+//     return $this->hasManyThrough(Attendance::class, Seance::class, 'code_group', 'code_seance');
+// }
+#########################################################################
 
 }

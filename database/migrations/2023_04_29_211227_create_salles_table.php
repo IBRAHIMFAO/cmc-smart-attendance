@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('numero_salle');
             $table->string('label', 20);
-            $table->enum('status', ['salle', 'atelier']);
+            $table->enum('status', ['salle', 'atelier','info']);
             $table->timestamps();
         });
     }
